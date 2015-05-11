@@ -41,6 +41,7 @@ There's no installation rule in the makefile. TODO ;)
     * [X] Compare.
     * [X] Automatic allocation.
     * [X] Automatic print.
+    * [X] Automatic copy.
     * [ ] Add rows/columns.
     * [ ] Initialize matrix.
 * [ ] Signal related function list:
