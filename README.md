@@ -1,5 +1,7 @@
-LIBMATTHREAD: C Library for Matrix, Vector, and Discrete Signal operation
+LIBMATTHREAD
 ===============================================================================
+
+C Library for Matrix, Vector, and Discrete Signal operation.
 
 The main idea is to make a C library for matrix, vector and signal operation based on multithreading. The aim is to learn stuff, not to make the ultimate library.
 
@@ -15,6 +17,7 @@ The main idea is to make a C library for matrix, vector and signal operation bas
         * Simple test programs.
 
 **COMPILATION**
+
 All the .o files are creted in "build" directory, interesting stuff is kept in root directory.
 
     * Library and binaries:
@@ -24,6 +27,7 @@ All the .o files are creted in "build" directory, interesting stuff is kept in r
         * $ make tests
 
 **INSTALLATION**
+
 There's no installation rule in the makefile. TODO ;)
 
 **LIST OF AVAILABLE FUNCTIONALITIES**
