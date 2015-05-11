@@ -80,4 +80,11 @@ int matalloc(matrix_t * matrix, size_t width, size_t height);
  */
 void matfree(matrix_t * matrix);
 
+/**
+ * @brief Copy two matrix_t elements
+ * @param src,dest Copy src in dest
+ * @returns 0 if ok, -1 if error
+ */
+int matcpy(matrix_t * dest, matrix_t * src);
+
 #endif //MATTHREAD_COMMONH

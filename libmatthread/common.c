@@ -73,3 +73,21 @@ void matfree(matrix_t * matrix){
     matrix->width=0;
     matrix->height=0;
 }
+
+int matcpy(matrix_t * dest, matrix_t * src){
+
+    //First check if size is the same, if it isn't reallocate dest.
+    //If size is 0 it's not initialized, don't free.
+    if( !(dest->height == src->height && dest->width == src->width) ){
+        if( dest->height==0 && dest->width==0)
+            matfree(dest);
+        if( matalloc(dest, src->width, src->height) )
+            return -1;
+    }
+
+    int i;
+    for( i=0; i < dest->width * dest->height; i++){
+        dest->data[i] = src->data[i];
+    }
+    return 0;
+}

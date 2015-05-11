@@ -44,6 +44,13 @@ int main ( int argc, char * argv [] ){
 
     saveByName("testfiles/output.mat", "c", &C);
 
+    //TEST probar si funciona el copiar:
+    matrix_t D;
+    matcpy(&D, &C);
+    printf("\nMatriz D:\n");
+    matprint(D);
+    matfree(&D);
+
     matfree(&C);
     matfree(&A);
     matfree(&B);
