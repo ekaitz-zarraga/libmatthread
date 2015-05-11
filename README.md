@@ -18,7 +18,7 @@ The main idea is to make a C library for matrix, vector and signal operation bas
 
 **COMPILATION**
 
-All the .o files are creted in "build" directory, interesting stuff is kept in root directory.
+All the .o files are stored in "build" directory, interesting stuff is kept in root directory.
 
 * Library and binaries:
     * $ make
