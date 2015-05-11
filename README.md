@@ -37,16 +37,16 @@ There's no installation rule in the makefile. TODO ;)
 **TODO LIST**
 
     * [ ] Improve error handling.
-    * General function list:
+    * [ ] General function list:
         * [X] Compare.
         * [X] Automatic allocation.
         * [X] Automatic print.
         * [ ] Add rows/columns.
         * [ ] Initialize matrix.
-    * Signal related function list:
+    * [ ] Signal related function list:
         * [ ] Convoltion: Not multithreaded yet.
         * [ ] Correlation.
-    * Matrix related function list:
+    * [ ] Matrix related function list:
         * [ ] Multiply matrices.
-    * General purpose function list:
+    * [ ] General purpose function list:
         * [X] Octave .mat files input/output.
