@@ -27,6 +27,7 @@
  */
 
 #include"octaveIO.h"
+#include"common.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -69,7 +70,8 @@ int loadByName(char * fileName, char * name, matrix_t * matrix){
             }
             // Content
             //TODO allocate memory and get values
-            matrix->data = malloc(sizeof(long double) * (matrix->height) * (matrix->width));
+            if( matalloc( matrix, matrix->width, matrix->height) )
+                return -1;
             int i;
             for(i=0; i<( matrix->height * matrix->width ); i++){
                 fscanf(file, "%Lf", &matrix->data[i]);
@@ -82,9 +84,6 @@ int loadByName(char * fileName, char * name, matrix_t * matrix){
     return 0;
 }
 
-void unload(matrix_t * matrix){
-    free(matrix->data);
-}
 
 int saveByName(char * fileName, char * name, matrix_t * matrix){
 

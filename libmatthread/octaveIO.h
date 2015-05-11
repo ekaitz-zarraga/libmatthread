@@ -26,7 +26,7 @@
  *
  */
 
-#include<structures.h>
+#include"common.h"
 
 /**
  * @brief Load matrix_t by name from .mat file
@@ -36,12 +36,6 @@
  * @param[in] matrix matrix to load content in. FIXME Must be uninitialized.
  */
 int loadByName(char * fileName, char * name, matrix_t * matrix);
-
-/**
- * @bried Unload allocated matrix_t element.
- * FIXME Move to common.
- */
-void unload(matrix_t * matrix);
 
 /**
  * @brief Save matrix_t to .mat file.

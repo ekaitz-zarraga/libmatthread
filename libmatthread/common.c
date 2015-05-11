@@ -27,7 +27,7 @@
  */
 
 #include<stdio.h>
-#include<structures.h>
+#include<stdlib.h>
 #include"common.h"
 
 int matcmp( matrix_t a, matrix_t b ){
@@ -53,7 +53,7 @@ void matprint( matrix_t matrix ){
     for( i=0; i < matrix.height; i++){
         for( j=0; j < matrix.width; j++)
             printf("%Lf\t", MATRIX(matrix, i, j));
-        putc('\n')
+        putc('\n', stdout);
     }
 }
 
@@ -66,4 +66,10 @@ int matalloc(matrix_t * matrix, size_t width, size_t height){
     matrix->width=width;
     matrix->height=height;
     return 0;
+}
+
+void matfree(matrix_t * matrix){
+    free(matrix->data);
+    matrix->width=0;
+    matrix->height=0;
 }

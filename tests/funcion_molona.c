@@ -17,7 +17,7 @@
 */
 #include<stdio.h>
 #include<stdlib.h>
-#include<structures.h>
+#include<common.h>
 #include<octaveIO.h>
 
 void main(int argc, char * argv[] ){
@@ -30,5 +30,5 @@ void main(int argc, char * argv[] ){
         printf("%.16Lf ", A.data[i]);
     }
     printf("\n%d\n", i);
-    unload(&A);
+    matfree(&A);
 }

@@ -29,9 +29,9 @@
 
 #include<stdio.h>
 #include<pthread.h>
-#include<structures.h>
 #include<stdlib.h>
 #include<string.h>
+#include"common.h"
 #include"signals.h"
 
 
@@ -40,10 +40,7 @@ int convolution(matrix_t f, matrix_t g, matrix_t * fg){
     int n, m;
     fg->height=1;
     fg->width=f.width+g.width-1;
-
-    fg->data= malloc(sizeof(long double) * fg->width);
-    if(fg->data == NULL){
-        fprintf(stderr, "Out of memory, unable to allocate");
+    if( matalloc( fg, fg->width, fg->height) ){
         return -1;
     }
     memset(fg->data, 0, sizeof(long double) * fg->width);

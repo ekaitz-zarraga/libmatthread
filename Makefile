@@ -1,16 +1,16 @@
-VPATH		= src:include:lib:tests
+VPATH		= src:libmatthread:tests
 
 CC		= gcc
 CFLAGS		= -Wall -g
 
-INCLUDE		= include
+INCLUDE     = libmatthread
 OBJDIR		= build
 
 TARGETS		= 		# Add more standalones
 OBJECTS		= $(addprefix $(OBJDIR)/, )
 
 LIBS		= libmatthread.so	# Library for custom shit
-LIB_OBJECTS 	= $(addprefix $(OBJDIR)/, octaveIO.o convolution.o )
+LIB_OBJECTS 	= $(addprefix $(OBJDIR)/, common.o signals.o octaveIO.o)
 
 TESTS       = convoluciona
 TEST_OBJECTS    = $(addprefix $(OBJDIR)/, convoluciona.o)
@@ -38,7 +38,7 @@ $(LIB_OBJECTS): $(OBJDIR)/%.o: %.c
 tests: $(LIBS) $(TESTS)
 
 $(TESTS): $(TEST_OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $(TEST_OBJECTS) $(LIBS) -I$(INCLUDE)
+	$(CC) $(CFLAGS) -o $@ $(TEST_OBJECTS) $(LIBS)
 
 $(TEST_OBJECTS): $(OBJDIR)/%.o: %.c
 	mkdir -p $(OBJDIR)

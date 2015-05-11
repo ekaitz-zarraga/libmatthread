@@ -26,6 +26,31 @@
  *
  */
 
+#ifndef MATTHREAD_COMMONH
+#define MATTHREAD_COMMONH
+
+#include<stddef.h>
+
+// MATRICES
+//A macro to emulate a 2d array. Works just like matrix[row][col].
+#define PMATRIX(matrix, row, col) matrix->data[row + col * matrix->height]
+#define MATRIX(matrix, row, col) matrix.data[row + col * matrix.height]
+
+//A macro to emulate a vector or a signal using the matrix_t element.
+#define PVECTOR(matrix, pos) matrix->data[pos]
+#define VECTOR(matrix, pos) matrix.data[pos]
+
+typedef struct{
+    long double * data;
+    size_t height;
+    size_t width;
+} matrix_t;
+
+typedef struct {
+        size_t row;
+        size_t col;
+} m_pos_t;
+
 
 /**
  * @brief Compare two matrix_t elements.
@@ -48,3 +73,11 @@ void matprint( matrix_t matrix );
  * @returns 0 if ok, -1 if errors.
  */
 int matalloc(matrix_t * matrix, size_t width, size_t height);
+
+/**
+ * @brief Free allocated matrix_t
+ * @param[in] matrix matrix_t element to free
+ */
+void matfree(matrix_t * matrix);
+
+#endif //MATTHREAD_COMMONH

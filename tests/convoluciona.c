@@ -15,9 +15,9 @@
    along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 */
-#include<structures.h>
+#include<common.h>
 #include<octaveIO.h>
-#include<convolution.h>
+#include<signals.h>
 #include<stdio.h>
 
 int main ( int argc, char * argv [] ){
@@ -27,33 +27,26 @@ int main ( int argc, char * argv [] ){
     loadByName("testfiles/input.mat", "a", &A);
     loadByName("testfiles/input.mat", "b", &B);
 
-    int n;
     printf("Matriz A:\n");
-    for (n=0; n< A.width; n++){
-        printf("%Lf\t", A.data[n]);
-    }
+    matprint(A);
     putchar('\n');
 
     printf("Matriz B:\n");
-    for (n=0; n< B.width; n++){
-        printf("%Lf\t", B.data[n]);
-    }
+    matprint(B);
     putchar('\n');
-    if( convolution(A,B,&C)){
+    if( convolution(A,B,&C) ){
         return 1;
     }
 
     printf("\nMatriz C:\n");
-    for (n=0; n< C.width; n++){
-        printf("%.17Lf\t", C.data[n]);
-    }
+    matprint(C);
     putchar('\n');
 
     saveByName("testfiles/output.mat", "c", &C);
 
-    unload(&A);
-    unload(&B);
-    unload(&C);
+    matfree(&C);
+    matfree(&A);
+    matfree(&B);
 
     return 0;
 }
