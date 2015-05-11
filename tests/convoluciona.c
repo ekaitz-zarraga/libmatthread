@@ -46,6 +46,8 @@ int main ( int argc, char * argv [] ){
 
     //TEST probar si funciona el copiar:
     matrix_t D;
+    D.height=0;
+    D.width=0;
     matcpy(&D, &C);
     printf("\nMatriz D:\n");
     matprint(D);
