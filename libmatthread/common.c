@@ -30,6 +30,14 @@
 #include<stdlib.h>
 #include"common.h"
 
+matrix_t matinit(){
+    matrix_t matrix;
+    matrix.data=NULL;
+    matrix.width=0;
+    matrix.height=0;
+    return matrix;
+}
+
 int matcmp( matrix_t a, matrix_t b ){
 
     if(a.width != b.width){
@@ -58,6 +66,8 @@ void matprint( matrix_t matrix ){
 }
 
 int matalloc(matrix_t * matrix, size_t width, size_t height){
+    if( matrix->data != NULL )  //If it's not empty, free it and reallocate.
+        matfree(matrix);
     matrix->data=malloc(sizeof(long double) * width * height);
     if(matrix->data==NULL){
        fprintf(stderr, "Unable to allocate data");
@@ -79,8 +89,6 @@ int matcpy(matrix_t * dest, matrix_t * src){
     //First check if size is the same, if it isn't reallocate dest.
     //If size is 0 it's not initialized, don't free.
     if( !(dest->height == src->height && dest->width == src->width) ){
-        if( dest->height!=0 || dest->width!=0 )
-            matfree(dest);
         if( matalloc(dest, src->width, src->height) )
             return -1;
     }

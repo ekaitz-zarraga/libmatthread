@@ -22,7 +22,9 @@
 
 int main ( int argc, char * argv [] ){
 
-    matrix_t A, B, C;
+    matrix_t A=matinit();
+    matrix_t B=matinit();
+    matrix_t C=matinit();
 
     loadByName("testfiles/input.mat", "a", &A);
     loadByName("testfiles/input.mat", "b", &B);
@@ -46,7 +48,7 @@ int main ( int argc, char * argv [] ){
     saveByName("testfiles/output.mat", "c", &C);
 
     //TEST probar si funciona el copiar:
-    matrix_t D;
+    matrix_t D = matinit();
     D.height=0;
     D.width=0;
     matcpy(&D, &C);

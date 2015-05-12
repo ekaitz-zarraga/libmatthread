@@ -53,6 +53,13 @@ typedef struct {
 
 
 /**
+ * @brief initialize matrix_t element with 0s.
+ * @returns start value for matrix_t element.
+ * Call it when creating new matrix_t, it initializes values.
+ */
+matrix_t matinit();
+
+/**
  * @brief Compare two matrix_t elements.
  * @returns 0 if equal and -1 if not equal.
  * @param[in] a,b matrix_t elements to compare.

@@ -38,12 +38,11 @@
 matrix_t convolution(matrix_t f, matrix_t g){
 
     int n, m;
-    matrix_t fg;
+    matrix_t fg = matinit();
     fg.height=1;
     fg.width=f.width+g.width-1;
     if( matalloc( &fg, fg.width, fg.height) ){
-        fg.height=0;
-        fg.width=0;
+        fg = matinit();
         return fg;
     }
     memset(fg.data, 0, sizeof(long double) * fg.width);
