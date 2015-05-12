@@ -52,5 +52,7 @@ There's no installation rule in the makefile. TODO ;)
     * [ ] Correlation.
 * [ ] Matrix related function list:
     * [ ] Multiply matrices.
+    * [ ] Gauss solve.
+    * [ ] Kramer solve.
 * [ ] General purpose function list:
     * [X] Octave .mat files input/output.
