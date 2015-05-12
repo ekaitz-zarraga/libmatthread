@@ -26,6 +26,8 @@
  * are used to contain discrete signals.
  *
  */
+#ifndef MATTHREAD_SIGNALH
+#define MATTHREAD_SIGNALH
 
 /**
  * @brief Discrete convolution of two signals.
@@ -33,3 +35,5 @@
  * @param[in] f,g,fg fg=f*g
  */
 int convolution(matrix_t f, matrix_t g, matrix_t * fg);
+
+#endif //MATTHREAD_SIGNALH

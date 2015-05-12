@@ -25,6 +25,8 @@
  * Read/Write functions for Octave .mat files.
  *
  */
+#ifndef MATTHREAD_OCTAVEIOH
+#define MATTHREAD_OCTAVEIOH
 
 #include"common.h"
 
@@ -46,3 +48,5 @@ int loadByName(char * fileName, char * name, matrix_t * matrix);
  * TODO Check if file exists and, if exists, do not put the header.
  */
 int saveByName(char * filename, char * name, matrix_t * matrix);
+
+#endif //MATTHREAD_OCTAVEIOH
