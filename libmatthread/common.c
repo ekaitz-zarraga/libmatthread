@@ -70,7 +70,7 @@ int matalloc(matrix_t * matrix, size_t width, size_t height){
         matfree(matrix);
     matrix->data=malloc(sizeof(long double) * width * height);
     if(matrix->data==NULL){
-       fprintf(stderr, "Unable to allocate data");
+       fprintf(stderr, "\nUnable to allocate data\n");
        return -1;
     }
     matrix->width=width;
@@ -103,7 +103,7 @@ int matcpy(matrix_t * dest, matrix_t * src){
 matrix_t matjoinh( matrix_t first, matrix_t second ){
     matrix_t joined = matinit();
     if( first.height !=  second.height){
-        fprintf(stderr, "Matrix height does not match");
+        fprintf(stderr, "\nMatrix height does not match\n");
         return joined;
     }
     if( matalloc(&joined, first.width + second.width, first.height) )
@@ -125,7 +125,7 @@ matrix_t matjoinh( matrix_t first, matrix_t second ){
 matrix_t matjoinv( matrix_t first, matrix_t second ){
     matrix_t joined = matinit();
     if( first.width != second.width){
-        fprintf(stderr, "Matrix width does not match");
+        fprintf(stderr, "\nMatrix width does not match on matrix join\n");
         return joined;
     }
     if( matalloc(&joined, first.width, first.height + second.height) )
@@ -143,7 +143,11 @@ matrix_t matjoinv( matrix_t first, matrix_t second ){
     return joined;
 }
 
-void matswapcol(matrix_t matrix, size_t col1, size_t col2){
+int matswapcol(matrix_t matrix, size_t col1, size_t col2){
+    if( col1>=matrix.width || col2>=matrix.width ){
+        fprintf(stderr,"\nColumns out of of matrix on column swap\n");
+        return -1;
+    }
     double long swap;
     int i;
     for( i=0; i<matrix.height; i++ ){
@@ -151,9 +155,14 @@ void matswapcol(matrix_t matrix, size_t col1, size_t col2){
         MATRIX(matrix, i, col1) = MATRIX(matrix, i, col2);
         MATRIX(matrix, i, col2) = swap;
     }
+    return 0;
 }
 
-void matswaprow(matrix_t matrix, size_t row1, size_t row2){
+int matswaprow(matrix_t matrix, size_t row1, size_t row2){
+    if( row1>=matrix.height || row2>=matrix.height ){
+        fprintf(stderr,"\nRows out of of matrix on row swap\n");
+        return -1;
+    }
     double long swap;
     int i;
     for( i=0; i<matrix.width; i++ ){
@@ -161,4 +170,5 @@ void matswaprow(matrix_t matrix, size_t row1, size_t row2){
         MATRIX(matrix, row1, i) = MATRIX(matrix, row2, i);
         MATRIX(matrix, row2, i) = swap;
     }
+    return 0;
 }

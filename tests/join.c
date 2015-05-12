@@ -40,8 +40,8 @@ int main ( int argc, char * argv [] ){
     matrix_t C=matjoinv(A,B);
     matrix_t D=matjoinh(A,B);
 
-    matswaprow(C, 5, 0);
-    matswapcol(D, 4, 0);
+    matswaprow(C, 11, 0);
+    matswapcol(D, 4, 10);
 
     printf("\nMATRIZ C: matjoinv\n");
     matprint(C);
