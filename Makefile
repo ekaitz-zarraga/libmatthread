@@ -12,8 +12,7 @@ OBJECTS		= $(addprefix $(OBJDIR)/, )
 LIBS		= libmatthread.so	# Library for custom shit
 LIB_OBJECTS 	= $(addprefix $(OBJDIR)/, common.o signals.o octaveIO.o)
 
-TESTS       = convoluciona
-TEST_OBJECTS    = $(addprefix $(OBJDIR)/, convoluciona.o)
+TESTS       = convoluciona join
 
 all: $(TARGETS) $(LIBS)
 
@@ -37,10 +36,10 @@ $(LIB_OBJECTS): $(OBJDIR)/%.o: %.c
 
 tests: $(LIBS) $(TESTS)
 
-$(TESTS): $(TEST_OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $(TEST_OBJECTS) $(LIBS)
+$(TESTS): %: $(OBJDIR)/%.o
+	$(CC) $(CFLAGS) -o $@ $< $(LIBS)
 
-$(TEST_OBJECTS): $(OBJDIR)/%.o: %.c
+$(OBJDIR)/%.o: %.c
 	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDE)
 

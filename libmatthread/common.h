@@ -94,4 +94,20 @@ void matfree(matrix_t * matrix);
  */
 int matcpy(matrix_t * dest, matrix_t * src);
 
+/**
+ * @brief Join two matrixes horizontally
+ * @param[in] first which matrix goes first
+ * @param[in] second which goes second
+ * @returns the joined matrix
+ */
+matrix_t matjoinh( matrix_t first, matrix_t second );
+
+/**
+ * @brief Join two matrixes vertically
+ * @param[in] first which matrix goes first
+ * @param[in] second which goes second
+ * @returns the joined matrix
+ */
+matrix_t matjoinv( matrix_t first, matrix_t second );
+
 #endif //MATTHREAD_COMMONH

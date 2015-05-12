@@ -99,3 +99,46 @@ int matcpy(matrix_t * dest, matrix_t * src){
     }
     return 0;
 }
+
+matrix_t matjoinh( matrix_t first, matrix_t second ){
+    matrix_t joined = matinit();
+    if( first.height !=  second.height){
+        fprintf(stderr, "Matrix height does not match");
+        return joined;
+    }
+    if( matalloc(&joined, first.width + second.width, first.height) )
+        return joined;
+
+    int row, col;
+    for(row=0; row < joined.height; row++){
+        for(col=0; col< joined.width; col++){
+            if( col<first.width )
+                MATRIX(joined, row, col) = MATRIX(first, row, col);
+            else
+                MATRIX(joined, row, col) = MATRIX(second, row, (col-first.width));
+
+        }
+    }
+    return joined;
+}
+
+matrix_t matjoinv( matrix_t first, matrix_t second ){
+    matrix_t joined = matinit();
+    if( first.width != second.width){
+        fprintf(stderr, "Matrix width does not match");
+        return joined;
+    }
+    if( matalloc(&joined, first.width, first.height + second.height) )
+        return joined;
+
+    int row, col;
+    for( col=0; col<joined.width; col++ ){
+        for( row=0; row<joined.height; row++){
+            if( row<first.height )
+                MATRIX(joined, row, col) = MATRIX(first, row, col);
+            else
+                MATRIX(joined, row, col) = MATRIX(second, (row-first.height), col);
+        }
+    }
+    return joined;
+}

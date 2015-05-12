@@ -42,8 +42,9 @@ There's no installation rule in the makefile. TODO ;)
     * [X] Automatic allocation.
     * [X] Automatic print.
     * [X] Automatic copy.
-    * [ ] Add rows/columns.
-    * [ ] Initialize matrix.
+    * [X] Add rows/columns.
+    * [X] Initialize matrix to "uninitialized state" (NULL pointer and Zeros).
+    * [ ] Initialize N positions to X value.
 * [ ] Signal related function list:
     * [ ] Convolution: Not multithreaded yet.
     * [ ] Correlation.
