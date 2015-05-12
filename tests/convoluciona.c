@@ -34,7 +34,8 @@ int main ( int argc, char * argv [] ){
     printf("Matriz B:\n");
     matprint(B);
     putchar('\n');
-    if( convolution(A,B,&C) ){
+    C=convolution(A,B);
+    if( C.height==0 ){
         return 1;
     }
 

@@ -31,9 +31,11 @@
 
 /**
  * @brief Discrete convolution of two signals.
- * @returns -1 if error, 0 if ok
- * @param[in] f,g,fg fg=f*g
+ * @returns the convolution of the signals
+ * @param[in] f,g input signals
+ * @param[out] matrix_t convolution of f and g
+ * Discrete convolution of two signals, it allocates output internally. Must free resource later.
  */
-int convolution(matrix_t f, matrix_t g, matrix_t * fg);
+matrix_t convolution(matrix_t f, matrix_t g);
 
 #endif //MATTHREAD_SIGNALH

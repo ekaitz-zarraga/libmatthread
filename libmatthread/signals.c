@@ -35,22 +35,25 @@
 #include"signals.h"
 
 
-int convolution(matrix_t f, matrix_t g, matrix_t * fg){
+matrix_t convolution(matrix_t f, matrix_t g){
 
     int n, m;
-    fg->height=1;
-    fg->width=f.width+g.width-1;
-    if( matalloc( fg, fg->width, fg->height) ){
-        return -1;
+    matrix_t fg;
+    fg.height=1;
+    fg.width=f.width+g.width-1;
+    if( matalloc( &fg, fg.width, fg.height) ){
+        fg.height=0;
+        fg.width=0;
+        return fg;
     }
-    memset(fg->data, 0, sizeof(long double) * fg->width);
+    memset(fg.data, 0, sizeof(long double) * fg.width);
 
-    for (n=0; n < fg->width; n++){
+    for (n=0; n < fg.width; n++){
         for(m=0; m < g.width; m++){
             if(n-m>=0 && n-m<f.width)
-                fg->data[n]+=f.data[n-m]*g.data[m];
+                fg.data[n]+=f.data[n-m]*g.data[m];
         }
     }
 
-    return 0;
+    return fg;
 }
