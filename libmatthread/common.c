@@ -142,3 +142,23 @@ matrix_t matjoinv( matrix_t first, matrix_t second ){
     }
     return joined;
 }
+
+void matswapcol(matrix_t matrix, size_t col1, size_t col2){
+    double long swap;
+    int i;
+    for( i=0; i<matrix.height; i++ ){
+        swap = MATRIX(matrix, i, col1);
+        MATRIX(matrix, i, col1) = MATRIX(matrix, i, col2);
+        MATRIX(matrix, i, col2) = swap;
+    }
+}
+
+void matswaprow(matrix_t matrix, size_t row1, size_t row2){
+    double long swap;
+    int i;
+    for( i=0; i<matrix.width; i++ ){
+        swap = MATRIX(matrix, row1, i);
+        MATRIX(matrix, row1, i) = MATRIX(matrix, row2, i);
+        MATRIX(matrix, row2, i) = swap;
+    }
+}

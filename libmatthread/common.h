@@ -110,4 +110,16 @@ matrix_t matjoinh( matrix_t first, matrix_t second );
  */
 matrix_t matjoinv( matrix_t first, matrix_t second );
 
+/**
+ * @brief Swap columns
+ * @param[in] matrix,col1,col2 matrix and columns to swap
+ */
+void matswapcol(matrix_t matrix, size_t col1, size_t col2);
+
+/**
+ * @brief Swap rows
+ * @param[in] matrix,row1,row2 matrix and columns to swap
+ */
+void matswaprow(matrix_t matrix, size_t row1, size_t row2);
+
 #endif //MATTHREAD_COMMONH
