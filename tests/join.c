@@ -25,28 +25,28 @@ int main ( int argc, char * argv [] ){
     matrix_t A=matinit();
     matrix_t B=matinit();
 
-    matalloc(&A, 4, 5);
-    matalloc(&B, 4, 5);
+    matalloc(&A, 2, 4);
+    matalloc(&B, 2, 4);
 
     int i;
-    for (i=0; i<A.width*A.height; i++){
-        A.data[i]=1.111111111;
+    for (i=0; i<(A.width*A.height); i++){
+        A.data[i]=i;
     }
-    for (i=0; i<B.width*B.height; i++){
-        B.data[i]=8.888888888;
+    for (i=0; i<(B.width*B.height); i++){
+        B.data[i]=i;
     }
+    matprint(A);
+    matprint(B);
 
-    // Test swap
-    matrix_t C=matjoinv(A,B);
-    matrix_t D=matjoinh(A,B);
-
-    matswaprow(C, 11, 0);
-    matswapcol(D, 4, 10);
-
-    printf("\nMATRIZ C: matjoinv\n");
+    matrix_t C=matjoinh(A,B);
     matprint(C);
-    printf("\nMATRIZ D: matjoinh\n");
+    matrix_t D=matjoinv(A,B);
     matprint(D);
+
+    printf("\n\nTranspose test on B\n");
+    matprint(B);
+    mattranspose(&B);
+    matprint(B);
 
     matfree(&A);
     matfree(&B);

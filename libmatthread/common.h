@@ -33,8 +33,8 @@
 
 // MATRICES
 //A macro to emulate a 2d array. Works just like matrix[row][col].
-#define PMATRIX(matrix, row, col) matrix->data[row + col * matrix->height]
-#define MATRIX(matrix, row, col) matrix.data[row + col * matrix.height]
+#define PMATRIX(matrix, row, col) matrix->data[row * matrix->width + col]
+#define MATRIX(matrix, row, col) matrix.data[row * matrix.width + col]
 
 //A macro to emulate a vector or a signal using the matrix_t element.
 #define PVECTOR(matrix, pos) matrix->data[pos]
@@ -124,4 +124,9 @@ int matswapcol(matrix_t matrix, size_t col1, size_t col2);
  */
 int matswaprow(matrix_t matrix, size_t row1, size_t row2);
 
+/**
+ * @brief Matrix transpose
+ * @param[in] matrix matrix to transpose
+ */
+void mattranspose( matrix_t * matrix );
 #endif //MATTHREAD_COMMONH

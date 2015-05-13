@@ -46,7 +46,8 @@ There's no installation rule in the makefile. TODO ;)
     * [X] Initialize matrix to "uninitialized state" (NULL pointer and Zeros).
     * [ ] Initialize N positions to X value.
     * [X] Move rows and columns.
-    * [ ] Transpose.
+    * [X] Transpose.
+    * [ ] Sparse Matrix/vector support.
 * [ ] Signal related function list:
     * [ ] Convolution: Not multithreaded yet.
     * [ ] Correlation.

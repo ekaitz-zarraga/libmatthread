@@ -58,9 +58,10 @@ int matcmp( matrix_t a, matrix_t b ){
 
 void matprint( matrix_t matrix ){
     int i,j;
+    printf("\nMATRIX: height-> %d width->%d\n",(int) matrix.height, (int)matrix.width);
     for( i=0; i < matrix.height; i++){
         for( j=0; j < matrix.width; j++)
-            printf("%Lf\t", MATRIX(matrix, i, j));
+            printf("%Lg\t", MATRIX(matrix, i, j));
         putc('\n', stdout);
     }
 }
@@ -108,15 +109,14 @@ matrix_t matjoinh( matrix_t first, matrix_t second ){
     }
     if( matalloc(&joined, first.width + second.width, first.height) )
         return joined;
-
-    int row, col;
-    for(row=0; row < joined.height; row++){
-        for(col=0; col< joined.width; col++){
-            if( col<first.width )
-                MATRIX(joined, row, col) = MATRIX(first, row, col);
-            else
-                MATRIX(joined, row, col) = MATRIX(second, row, (col-first.width));
-
+    int i, j;
+    for(i=0; i<joined.height; i++){
+        for(j=0; j<joined.width; j++){
+            if(j<first.width){
+                MATRIX(joined, i, j)= MATRIX(first, i, j);
+            }else{
+                MATRIX(joined, i, j)= MATRIX(second, i, (j-first.width));
+            }
         }
     }
     return joined;
@@ -124,20 +124,20 @@ matrix_t matjoinh( matrix_t first, matrix_t second ){
 
 matrix_t matjoinv( matrix_t first, matrix_t second ){
     matrix_t joined = matinit();
-    if( first.width != second.width){
-        fprintf(stderr, "\nMatrix width does not match on matrix join\n");
+    if( first.width !=  second.width){
+        fprintf(stderr, "\nMatrix width does not match\n");
         return joined;
     }
-    if( matalloc(&joined, first.width, first.height + second.height) )
+    if( matalloc(&joined, first.width, first.height+second.height))
         return joined;
-
-    int row, col;
-    for( col=0; col<joined.width; col++ ){
-        for( row=0; row<joined.height; row++){
-            if( row<first.height )
-                MATRIX(joined, row, col) = MATRIX(first, row, col);
-            else
-                MATRIX(joined, row, col) = MATRIX(second, (row-first.height), col);
+    int i,j;
+    for(i=0; i<joined.height; i++){
+        for(j=0; j<joined.width; j++){
+            if(i<first.height){
+                MATRIX(joined, i, j)= MATRIX(first, i, j);
+            }else{
+                MATRIX(joined, i, j)= MATRIX(second, (i-first.height), j);
+            }
         }
     }
     return joined;
@@ -171,4 +171,21 @@ int matswaprow(matrix_t matrix, size_t row1, size_t row2){
         MATRIX(matrix, row2, i) = swap;
     }
     return 0;
+}
+
+void mattranspose( matrix_t * matrix ){
+    // Play with this:
+    // #define PMATRIX(matrix, row, col) matrix->data[row * matrix->width + col]
+    matrix_t transposed=matinit();
+    matalloc(&transposed, matrix->height, matrix->width); // invert height-width
+    int i,j;
+    for( i=0; i<matrix->height; i++){
+        for( j=0; j<matrix->width; j++){
+            MATRIX(transposed,j,i)=PMATRIX(matrix,i,j);
+        }
+    }
+    matfree(matrix);
+    matrix->data=transposed.data;
+    matrix->height=transposed.height;
+    matrix->width=transposed.width;
 }
