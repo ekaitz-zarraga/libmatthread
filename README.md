@@ -44,7 +44,8 @@ There's no installation rule in the makefile. TODO ;)
     * [X] Automatic copy.
     * [X] Add rows/columns.
     * [X] Initialize matrix to "uninitialized state" (NULL pointer and Zeros).
-    * [ ] Initialize N positions to X value.
+    * [X] Initialize to X value-> Done by zeros and ones matrixes and joins+multiply.
+    * [X] Multiply scalar.
     * [X] Move rows and columns.
     * [X] Transpose.
     * [ ] Sparse Matrix/vector support.

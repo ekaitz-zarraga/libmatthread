@@ -25,13 +25,14 @@ int main ( int argc, char * argv [] ){
     matrix_t A=matinit();
     matrix_t B=matinit();
 
-    matalloc(&A, 2, 4);
+    A=matones(2, 4);
     matalloc(&B, 2, 4);
 
     int i;
-    for (i=0; i<(A.width*A.height); i++){
-        A.data[i]=i;
-    }
+
+    //for (i=0; i<(A.width*A.height); i++){
+    //    A.data[i]=i;
+    //}
     for (i=0; i<(B.width*B.height); i++){
         B.data[i]=i;
     }
@@ -42,6 +43,9 @@ int main ( int argc, char * argv [] ){
     matprint(C);
     matrix_t D=matjoinv(A,B);
     matprint(D);
+
+    matrix_t E=matmultscalar(A,8);
+    matprint(E);
 
     printf("\n\nTranspose test on B\n");
     matprint(B);

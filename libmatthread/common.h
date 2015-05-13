@@ -98,7 +98,7 @@ int matcpy(matrix_t * dest, matrix_t * src);
  * @brief Join two matrixes horizontally
  * @param[in] first which matrix goes first
  * @param[in] second which goes second
- * @returns the joined matrix
+ * @returns the joined matrix_t element, needs to be freed later
  */
 matrix_t matjoinh( matrix_t first, matrix_t second );
 
@@ -106,7 +106,7 @@ matrix_t matjoinh( matrix_t first, matrix_t second );
  * @brief Join two matrixes vertically
  * @param[in] first which matrix goes first
  * @param[in] second which goes second
- * @returns the joined matrix
+ * @returns the joined matrix_t element, needs to be freed later
  */
 matrix_t matjoinv( matrix_t first, matrix_t second );
 
@@ -129,4 +129,26 @@ int matswaprow(matrix_t matrix, size_t row1, size_t row2);
  * @param[in] matrix matrix to transpose
  */
 void mattranspose( matrix_t * matrix );
+
+/**
+ * @brief Create matrix_t full of zeros
+ * @param[in] width,height Size of the new matrix_t
+ * @returns allocated matrix_t element full of ones, needs to be freed later.
+ */
+matrix_t matones(size_t width, size_t height);
+
+/**
+ * @brief Create matrix_t full of zeros
+ * @param[in] width,height Size of the new matrix_t
+ * @returns allocated matrix_t element full of zeros, needs to be freed later.
+ */
+matrix_t matzeros(size_t width, size_t height);
+
+/**
+ * @brief Create matrix_t full of zeros
+ * @param[in] width,height Size of the new matrix_t
+ * @returns allocated matrix_t element with the multiplication, needs to be freed later.
+ */
+matrix_t matmultscalar(matrix_t matrix, long double scalar);
+
 #endif //MATTHREAD_COMMONH

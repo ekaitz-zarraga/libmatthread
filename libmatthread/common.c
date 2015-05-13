@@ -189,3 +189,33 @@ void mattranspose( matrix_t * matrix ){
     matrix->height=transposed.height;
     matrix->width=transposed.width;
 }
+
+matrix_t matones(size_t width, size_t height){
+    matrix_t ones=matinit();
+    if( matalloc(&ones, width, height) )
+        return ones;
+    int i;
+    for(i=0; i<width*height; i++)
+        ones.data[i]=1;
+    return ones;
+}
+
+matrix_t matzeros(size_t width, size_t height){
+    matrix_t ones=matinit();
+    if( matalloc(&ones, width, height) )
+        return ones;
+    int i;
+    for(i=0; i<width*height; i++)
+        ones.data[i]=0;
+    return ones;
+}
+
+matrix_t matmultscalar(matrix_t matrix, long double scalar){
+    matrix_t mult=matinit();
+    if(matalloc(&mult, matrix.width, matrix.height))
+        return mult;
+    int i;
+    for(i=0; i<matrix.width*matrix.height; i++)
+        mult.data[i]=matrix.data[i]*scalar;
+    return mult;
+}
