@@ -48,6 +48,7 @@ There's no installation rule in the makefile. TODO ;)
     * [X] Multiply scalar.
     * [X] Move rows and columns.
     * [X] Transpose.
+    * [ ] Get/put rows.
     * [ ] Sparse Matrix/vector support.
 * [ ] Signal related function list:
     * [ ] Convolution: Not multithreaded yet.

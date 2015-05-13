@@ -44,8 +44,8 @@ int main ( int argc, char * argv [] ){
     matrix_t D=matjoinv(A,B);
     matprint(D);
 
-    matrix_t E=matmultscalar(A,8);
-    matprint(E);
+    matmultscalar(A,8);
+    matprint(A);
 
     printf("\n\nTranspose test on B\n");
     matprint(B);

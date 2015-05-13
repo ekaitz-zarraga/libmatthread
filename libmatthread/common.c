@@ -210,12 +210,10 @@ matrix_t matzeros(size_t width, size_t height){
     return ones;
 }
 
-matrix_t matmultscalar(matrix_t matrix, long double scalar){
-    matrix_t mult=matinit();
-    if(matalloc(&mult, matrix.width, matrix.height))
-        return mult;
+void matmultscalar(matrix_t matrix, long double scalar){
     int i;
     for(i=0; i<matrix.width*matrix.height; i++)
-        mult.data[i]=matrix.data[i]*scalar;
-    return mult;
+        matrix.data[i]=matrix.data[i]*scalar;
 }
+
+
