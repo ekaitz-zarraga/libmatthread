@@ -49,11 +49,12 @@ There's no installation rule in the makefile. TODO ;)
     * [X] Move rows and columns.
     * [X] Transpose.
     * [ ] Get/put rows.
-    * [ ] Sparse Matrix/vector support.
+    * [ ] Avoid copies (return matrix\_t) in non-initializer functions.
 * [ ] Signal related function list:
     * [ ] Convolution: Not multithreaded yet.
     * [ ] Correlation.
 * [ ] Matrix related function list:
+    * [ ] Sparse Matrix support.
     * [ ] Multiply matrices.
     * [ ] Gauss solve.
     * [ ] Kramer solve.
