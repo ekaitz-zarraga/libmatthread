@@ -81,6 +81,7 @@ int matalloc(matrix_t * matrix, size_t width, size_t height){
 
 void matfree(matrix_t * matrix){
     free(matrix->data);
+    matrix->data=NULL;
     matrix->width=0;
     matrix->height=0;
 }
@@ -217,3 +218,70 @@ void matmultscalar(matrix_t matrix, long double scalar){
 }
 
 
+matrix_t matgetrow(matrix_t matrix, size_t row){
+    matrix_t matrow=matinit();
+    if( row >= matrix.height){
+        fprintf(stderr,"\nAsking for a row out of matrix, returning uninitialized matrix_t\n");
+        return matrow;
+    }
+    if(matalloc(&matrow, matrix.width, 1))
+        return matrow;
+    int j;
+    for(j=0; j<matrix.width; j++)
+        MATRIX(matrow, 0, j)=MATRIX(matrix, row, j);
+    return matrow;
+}
+
+matrix_t matgetcol(matrix_t matrix, size_t col){
+    matrix_t matcol=matinit();
+    if( col >= matrix.width){
+        fprintf(stderr,"\nAsking for a column out of matrix, returning uninitialized matrix_t\n");
+        return matcol;
+    }
+    if(matalloc(&matcol, 1, matrix.height))
+        return matcol;
+    int i;
+    for(i=0; i<matrix.height; i++)
+        MATRIX(matcol, i, 0)=MATRIX(matrix, i, col);
+    return matcol;
+}
+
+int matsetrow(matrix_t matrix, matrix_t matrow, size_t row){
+    if(matrow.height!=1){
+        fprintf(stderr, "\nIntroduced row has height!=1\n");
+        return -1;
+    }
+    if(matrow.width!=matrix.width){
+        fprintf(stderr, "\nIntroduced row and matrix have different width\n");
+        return -1;
+    }
+    if(row>=matrix.height){
+        fprintf(stderr, "\nSetting row out of matrix\n");
+        return -1;
+    }
+    int j;
+    for(j=0; j<matrix.width; j++){
+        MATRIX(matrix, row, j)=MATRIX(matrow, 0, j);
+    }
+    return 0;
+}
+
+int matsetcol(matrix_t matrix, matrix_t matcol, size_t col){
+    if(matcol.width!=1){
+        fprintf(stderr, "\nIntroduced col has width!=1\n");
+        return -1;
+    }
+    if(matcol.height!=matrix.height){
+        fprintf(stderr, "\nIntroduced row and matrix have different heigth\n");
+        return -1;
+    }
+    if(col>=matrix.width){
+        fprintf(stderr, "\nSetting col out of matrix\n");
+        return -1;
+    }
+    int i;
+    for(i=0; i<matrix.height; i++){
+        MATRIX(matrix, i, col)=MATRIX(matcol, i, 0);
+    }
+    return 0;
+}

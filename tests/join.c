@@ -45,6 +45,10 @@ int main ( int argc, char * argv [] ){
     matprint(D);
 
     matmultscalar(A,8);
+    matrix_t col=matgetcol(A,1);
+    matmultscalar(col, 5);
+    matsetcol(A, col, 1);
+    matfree(&col);
     matprint(A);
 
     printf("\n\nTranspose test on B\n");

@@ -54,8 +54,9 @@ typedef struct {
 
 /**
  * @brief initialize matrix_t element with 0s.
- * @returns start value for matrix_t element.
  * Call it when creating new matrix_t, it initializes values.
+ * @returns start value for matrix_t element.
+ * @see matalloc
  */
 matrix_t matinit();
 
@@ -78,12 +79,14 @@ void matprint( matrix_t matrix );
  * @param[in] matrix matrix_t element to allocate
  * @param[in] width,height size of matrix to allocate.
  * @returns 0 if ok, -1 if errors.
+ * @see matfree,matinit
  */
 int matalloc(matrix_t * matrix, size_t width, size_t height);
 
 /**
  * @brief Free allocated matrix_t
  * @param[in] matrix matrix_t element to free
+ * @see matalloc
  */
 void matfree(matrix_t * matrix);
 
@@ -99,6 +102,7 @@ int matcpy(matrix_t * dest, matrix_t * src);
  * @param[in] first which matrix goes first
  * @param[in] second which goes second
  * @returns the joined matrix_t element, needs to be freed later
+ * @see matjoinv
  */
 matrix_t matjoinh( matrix_t first, matrix_t second );
 
@@ -107,6 +111,7 @@ matrix_t matjoinh( matrix_t first, matrix_t second );
  * @param[in] first which matrix goes first
  * @param[in] second which goes second
  * @returns the joined matrix_t element, needs to be freed later
+ * @see matjoinh
  */
 matrix_t matjoinv( matrix_t first, matrix_t second );
 
@@ -114,6 +119,7 @@ matrix_t matjoinv( matrix_t first, matrix_t second );
  * @brief Swap columns
  * @param[in] matrix,col1,col2 matrix and columns to swap
  * @returns -1 if columns out of matrix, 0 if ok.
+ * @see matswaprow
  */
 int matswapcol(matrix_t matrix, size_t col1, size_t col2);
 
@@ -121,6 +127,7 @@ int matswapcol(matrix_t matrix, size_t col1, size_t col2);
  * @brief Swap rows
  * @param[in] matrix,row1,row2 matrix and columns to swap
  * @returns -1 if rows out of matrix, 0 if ok.
+ * @see matswapcol
  */
 int matswaprow(matrix_t matrix, size_t row1, size_t row2);
 
@@ -134,6 +141,7 @@ void mattranspose( matrix_t * matrix );
  * @brief Create matrix_t full of zeros
  * @param[in] width,height Size of the new matrix_t
  * @returns allocated matrix_t element full of ones, needs to be freed later.
+ * @see matzeros
  */
 matrix_t matones(size_t width, size_t height);
 
@@ -141,6 +149,7 @@ matrix_t matones(size_t width, size_t height);
  * @brief Create matrix_t full of ones
  * @param[in] width,height Size of the new matrix_t
  * @returns allocated matrix_t element full of zeros, needs to be freed later.
+ * @see matones
  */
 matrix_t matzeros(size_t width, size_t height);
 
@@ -150,5 +159,43 @@ matrix_t matzeros(size_t width, size_t height);
  * @returns allocated matrix_t element with the multiplication, needs to be freed later.
  */
 void matmultscalar(matrix_t matrix, long double scalar);
+
+/**
+ * @brief Get matrix_t elements row
+ * @param[in] matrix element to take row from
+ * @param[in] row row position
+ * @returns allocated matrix_t element with with the content of the row, needs to be freed later.
+ * @see matgetcol
+ */
+matrix_t matgetrow(matrix_t matrix, size_t row);
+
+/**
+ * @brief Get matrix_t elements column
+ * @param[in] matrix element to take column from
+ * @param[in] col column position
+ * @returns allocated matrix_t element with with the content of the col, needs to be freed later.
+ * @see matgetrow
+ */
+matrix_t matgetcol(matrix_t matrix, size_t col);
+
+/**
+ * @brief Set matrix_t elements row
+ * @param[in] matrix set row here
+ * @param[in] matrow values
+ * @param[in] row row position to overwrite
+ * @returns -1 if error, 0 if ok.
+ * @see matsetcol,matgetrow
+ */
+int matsetrow(matrix_t matrix, matrix_t matrow, size_t row);
+
+/**
+ * @brief Set matrix_t elements column
+ * @param[in] matrix set column here
+ * @param[in] matcol values
+ * @param[in] col column position to overwrite
+ * @returns -1 if error, 0 if ok.
+ * @see matsetrow,matgetcol
+ */
+int matsetcol(matrix_t matrix, matrix_t matcol, size_t col);
 
 #endif //MATTHREAD_COMMONH
