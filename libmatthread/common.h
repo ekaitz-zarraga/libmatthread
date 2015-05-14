@@ -32,6 +32,12 @@
 #include<stddef.h>
 
 // MATRICES
+
+//Standard matrices.
+#define IDENTITY(i, j) ((i == j) ? 1 : 0)
+#define UPTRIANGLE(i, j) ((i <= j) ? 1 : 0)
+#define DOWNTRIANGLE(i, j) ((i >= j) ? 1 : 0)
+
 //A macro to emulate a 2d array. Works just like matrix[row][col].
 #define PMATRIX(matrix, row, col) matrix->data[row * matrix->width + col]
 #define MATRIX(matrix, row, col) matrix.data[row * matrix.width + col]
