@@ -210,7 +210,7 @@ int matinc(matrix_t a, matrix_t b);
 /**
  * @brief add a and b, element by element
  * @param[in] a,b matrix_t elements to add
- * @returns a+b
+ * @returns a+b need to be freed later
  * @see matinc
  */
 matrix_t matadd(matrix_t a, matrix_t b);
