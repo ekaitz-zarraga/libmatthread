@@ -12,7 +12,7 @@ OBJECTS		= $(addprefix $(OBJDIR)/, )
 LIBS		= libmatthread.so	# Library for custom shit
 LIB_OBJECTS 	= $(addprefix $(OBJDIR)/, common.o signals.o octaveIO.o)
 
-TESTS       = convoluciona join
+TESTS       = convoluciona join crazy_test
 
 all: $(TARGETS) $(LIBS)
 

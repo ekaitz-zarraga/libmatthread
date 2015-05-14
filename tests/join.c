@@ -44,12 +44,21 @@ int main ( int argc, char * argv [] ){
     matrix_t D=matjoinv(A,B);
     matprint(D);
 
+    printf("\nPlay with A matrix:\n+ Multiply with 8\n+ Multiply first row with 5\n+ A=A+A\n");
     matmultscalar(A,8);
     matrix_t col=matgetcol(A,1);
     matmultscalar(col, 5);
     matsetcol(A, col, 1);
     matfree(&col);
+    matinc(A,A);
     matprint(A);
+
+
+    printf("\nZ=A+A\n");
+    matrix_t Z= matadd(A,A);
+    matprint(Z);
+    matfree(&Z);
+
 
     printf("\n\nTranspose test on B\n");
     matprint(B);

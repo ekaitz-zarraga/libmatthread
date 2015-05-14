@@ -49,6 +49,7 @@ There's no installation rule in the makefile. TODO ;)
     * [X] Move rows and columns.
     * [X] Transpose.
     * [X] Get/put rows.
+    * [X] Add element by element.
     * [ ] Avoid copies (return matrix\_t) in non-initializer functions.
 * [ ] Signal related function list:
     * [ ] Convolution: Not multithreaded yet.

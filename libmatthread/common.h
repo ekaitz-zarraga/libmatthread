@@ -198,4 +198,21 @@ int matsetrow(matrix_t matrix, matrix_t matrow, size_t row);
  */
 int matsetcol(matrix_t matrix, matrix_t matcol, size_t col);
 
+/**
+ * @brief increment a in b, element by element
+ * @param[in] a,b matrix_t elements to add
+ * @param[out] a set the result in a.
+ * @returns -1 if error, 0 if ok.
+ * @see matadd
+ */
+int matinc(matrix_t a, matrix_t b);
+
+/**
+ * @brief add a and b, element by element
+ * @param[in] a,b matrix_t elements to add
+ * @returns a+b
+ * @see matinc
+ */
+matrix_t matadd(matrix_t a, matrix_t b);
+
 #endif //MATTHREAD_COMMONH

@@ -285,3 +285,22 @@ int matsetcol(matrix_t matrix, matrix_t matcol, size_t col){
     }
     return 0;
 }
+
+int matinc(matrix_t a, matrix_t b){
+    if(a.height!=b.height || a.width != b.width){
+        fprintf(stderr, "\nMatrix sizes do not match on matadd\n");
+        return -1;
+    }
+    int i;
+    for(i=0; i<a.height*a.width; i++)
+        a.data[i]=a.data[i]+b.data[i];
+    return 0;
+}
+
+matrix_t matadd(matrix_t a, matrix_t b){
+    matrix_t c=matinit();
+    if(matcpy(&c,&a))
+        return c;
+    matinc(c,b);
+    return c;
+}
