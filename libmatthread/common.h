@@ -138,14 +138,14 @@ void mattranspose( matrix_t * matrix );
 matrix_t matones(size_t width, size_t height);
 
 /**
- * @brief Create matrix_t full of zeros
+ * @brief Create matrix_t full of ones
  * @param[in] width,height Size of the new matrix_t
  * @returns allocated matrix_t element full of zeros, needs to be freed later.
  */
 matrix_t matzeros(size_t width, size_t height);
 
 /**
- * @brief Create matrix_t full of zeros
+ * @brief Multiply matrix_t with a scalar, element by element
  * @param[in] width,height Size of the new matrix_t
  * @returns allocated matrix_t element with the multiplication, needs to be freed later.
  */
