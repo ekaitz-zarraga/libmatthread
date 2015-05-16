@@ -161,8 +161,8 @@ matrix_t matzeros(size_t width, size_t height);
 
 /**
  * @brief Multiply matrix_t with a scalar, element by element
- * @param[in] width,height Size of the new matrix_t
- * @returns allocated matrix_t element with the multiplication, needs to be freed later.
+ * @param[in] matrix matrix_t to multiply
+ * @param[in] scalar scalar to multiply
  */
 void matmultscalar(matrix_t matrix, long double scalar);
 
