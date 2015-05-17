@@ -56,7 +56,7 @@ There's no installation rule in the makefile. TODO ;)
     * [ ] Correlation.
 * [ ] Matrix related function list:
     * [ ] Sparse Matrix support.
-    * [ ] Multiply matrices.
+    * [ ] Multiply matrices: Not multithreaded yet.
     * [ ] Gauss solve.
     * [ ] Kramer solve.
 * [ ] General purpose function list:
