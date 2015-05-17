@@ -10,9 +10,9 @@ TARGETS		= 		# Add more standalones
 OBJECTS		= $(addprefix $(OBJDIR)/, )
 
 LIBS		= libmatthread.so	# Library for custom shit
-LIB_OBJECTS 	= $(addprefix $(OBJDIR)/, common.o signals.o octaveIO.o)
+LIB_OBJECTS 	= $(addprefix $(OBJDIR)/, common.o signals.o octaveIO.o matrices.o)
 
-TESTS       = convoluciona join crazy_test
+TESTS       = convoluciona join crazy_test multiply
 
 all: $(TARGETS) $(LIBS)
 
