@@ -42,9 +42,6 @@
 #define PMATRIX(matrix, row, col) matrix->data[row * matrix->width + col]
 #define MATRIX(matrix, row, col) matrix.data[row * matrix.width + col]
 
-//A macro to emulate a vector or a signal using the matrix_t element.
-#define PVECTOR(matrix, pos) matrix->data[pos]
-#define VECTOR(matrix, pos) matrix.data[pos]
 
 typedef struct{
     long double * data;
@@ -56,7 +53,6 @@ typedef struct {
         size_t row;
         size_t col;
 } m_pos_t;
-
 
 /**
  * @brief initialize matrix_t element with 0s.
