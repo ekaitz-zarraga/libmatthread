@@ -175,8 +175,6 @@ int matswaprow(matrix_t matrix, size_t row1, size_t row2){
 }
 
 void mattranspose( matrix_t * matrix ){
-    // Play with this:
-    // #define PMATRIX(matrix, row, col) matrix->data[row * matrix->width + col]
     matrix_t transposed=matinit();
     matalloc(&transposed, matrix->height, matrix->width); // invert height-width
     int i,j;
