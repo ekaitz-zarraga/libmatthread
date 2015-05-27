@@ -53,6 +53,8 @@ typedef struct {
         size_t row;
         size_t col;
 } m_pos_t;
+#define POSITIONINC(position, width) position.col==width-1 ? position.row++, position.col=0 : position.col++;
+#define PPOSITIONINC(position, width) position->col==width-1 ? position->row++, position->col=0 : position->col++;
 
 /**
  * @brief initialize matrix_t element with 0s.
