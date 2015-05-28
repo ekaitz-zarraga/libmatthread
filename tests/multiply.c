@@ -25,15 +25,17 @@ int main ( int argc, char * argv [] ){
     matrix_t A=matinit();
     matrix_t B=matinit();
 
-    A=matones(200, 400);
-    B=matones(400, 200);
+    A=matones(2000, 4000);
+    B=matones(4000, 2000);
 
     matmultscalar(B,34);
-    matrix_t C=matmult(A,B,0);
 
-    matprint(A);
-    matprint(B);
-    matprint(C);
+    matrix_t C;
+
+    C=matmultthreads(A,B,8);
+//    matprint(A);
+//    matprint(B);
+//    matprint(C);
 
     matfree(&A);
     matfree(&B);

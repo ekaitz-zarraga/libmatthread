@@ -9,6 +9,8 @@ OBJDIR		= build
 TARGETS		= 		# Add more standalones
 OBJECTS		= $(addprefix $(OBJDIR)/, )
 
+INC_LIBS    = -lpthread
+
 LIBS		= libmatthread.so	# Library for custom shit
 LIB_OBJECTS 	= $(addprefix $(OBJDIR)/, common.o signals.o octaveIO.o matrices.o)
 
@@ -26,7 +28,7 @@ $(OBJECTS): $(OBJDIR)/%.o: %.c
 
 
 $(LIBS): $(LIB_OBJECTS)
-	$(CC) $(CFLAGS) -shared -o $@ $(LIB_OBJECTS)
+	$(CC) $(CFLAGS) -shared -o $@ $(LIB_OBJECTS) $(INC_LIBS)
 
 $(LIB_OBJECTS): $(OBJDIR)/%.o: %.c
 	mkdir -p $(OBJDIR)
