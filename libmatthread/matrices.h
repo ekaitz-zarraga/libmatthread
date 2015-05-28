@@ -35,6 +35,6 @@
  * @param[in] threads number of threads to create, if 0 or negative use one per position.
  * @returns matrix_t containing the multiplication. If error, empty matrix.
  */
-matrix_t matmult(matrix_t a, matrix_t b, int threads);
-
+matrix_t matmultthreads(matrix_t a, matrix_t b, int thread_count);
+void * mult(void * param_pointer);
 #endif //MATTHREAD_MATRIXH
